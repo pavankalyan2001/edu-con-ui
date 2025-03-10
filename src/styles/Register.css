@@ -22,7 +22,7 @@
 
 .register-box input,
 .register-box select {
-    width: 0%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
