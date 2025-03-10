@@ -9,8 +9,9 @@ function Login() {
 
   useEffect(() => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
   }, []);
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -25,7 +26,18 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("token", data.token);
-        navigate("/dashboard");
+        const userDataResponse = await fetch("http://localhost:8081/api/auth/me", {
+          method: "GET",
+          headers: { Authorization: `Bearer ${data.token}` },
+        });
+        if(userDataResponse.ok){
+          const Userdata = await userDataResponse.json();
+          localStorage.setItem("user", Userdata.id);
+          localStorage.setItem("role", Userdata.role);
+          navigate("/dashboard");
+        }else{
+          alert("Error fetching user details");
+        }      
       } else {
         alert("Login failed");
       }

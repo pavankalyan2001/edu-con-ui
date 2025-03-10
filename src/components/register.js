@@ -18,14 +18,12 @@ export default function Register() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, password, role }),
             });
-            console.log("response: ", response);
             if (!response.ok) {
                 const errorData = await response.text();
                 alert(errorData);
                 navigate("/register");
             } else {
                 alert("Registration successful! Please login.");
-                localStorage.removeItem("token");
                 navigate("/login");
             }
         } catch (error) {
