@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.removeItem("token"); // Ensure token is cleared when login page opens
+    localStorage.removeItem("token");
   }, []);
   
   const handleLogin = async (e) => {
@@ -55,6 +55,12 @@ function Login() {
           />
           <button type="submit">Login</button>
         </form>
+        <p>
+          Don't have an account?{" "}
+          <span className="register-link" onClick={() => navigate("/register")}>
+            Register
+          </span>
+        </p>
       </div>
     </div>
   );
