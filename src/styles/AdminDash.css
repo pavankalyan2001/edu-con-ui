@@ -1,0 +1,74 @@
+.admin-dashboard-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar select,
+.search-bar input,
+.search-button {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.search-button:hover {
+    background-color: #2980b9;
+}
+
+.user-table,
+.appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.user-table th,
+.user-table td,
+.appointment-table th,
+.appointment-table td {
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.user-table th,
+.appointment-table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+.user-table tbody tr:nth-child(even),
+.appointment-table tbody tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}

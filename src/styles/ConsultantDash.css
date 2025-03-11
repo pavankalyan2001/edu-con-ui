@@ -1,0 +1,29 @@
+.confirm-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-right: 8px;
+  }
+  
+  .confirm-button:hover {
+    background-color: #45a049;
+  }
+  
+  .reject-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .reject-button:hover {
+    background-color: #c0392b;
+  }
+  

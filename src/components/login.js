@@ -34,7 +34,13 @@ function Login() {
           const Userdata = await userDataResponse.json();
           localStorage.setItem("user", Userdata.id);
           localStorage.setItem("role", Userdata.role);
-          navigate("/dashboard");
+          if(Userdata.role==='CONSULTANT'){
+            navigate("/conDashboard");
+          }else if(Userdata.role==='STUDENT'){
+            navigate("/dashboard");
+          }else if(Userdata.role==='ADMIN'){
+            navigate("/adminDashboard");
+          }
         }else{
           alert("Error fetching user details");
         }      
