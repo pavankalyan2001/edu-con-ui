@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/ConsultantDash.css";
 import ConsultantAppointmentsPie from "./conpiechart";
+import Feedbacks from "./feedbacks";
 
 export default function ConsultantAppointments() {
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [statusCounts, setStatusCounts] = useState({});
     const [salesCounts, setSalesCounts] = useState({});
+    const [userRole] = useState(localStorage.getItem("role"));
     const [view, setView] = useState("appointments");
 
     const navigate = useNavigate();
@@ -96,8 +98,11 @@ export default function ConsultantAppointments() {
                     <li className={view === "appointments" ? "active" : ""} onClick={() => setView("appointments")}>
                         Appointments
                     </li>
-                    <li className={view === "stats" ? "active" : ""} onClick={() => { setView("stats"); fetchConStatuses();fetchSales();}}>
+                    <li className={view === "stats" ? "active" : ""} onClick={() => { setView("stats"); fetchConStatuses(); fetchSales(); }}>
                         Statistics
+                    </li>
+                    <li className={view === "feedbacks" ? "active" : ""} onClick={() => { setView("feedbacks") }}>
+                        Feedbacks
                     </li>
                     <li onClick={handleLogout} className="logout">
                         Logout
@@ -164,12 +169,19 @@ export default function ConsultantAppointments() {
                             </table>
                         )}
                     </>
-                ) : (
+                ) : view === "stats" ? (
                     <>
                         <h2 className="text-2xl font-bold mb-4">Consultant Appointments and Course Sale Overview</h2>
                         <div style={{ display: "flex", justifyContent: "space-around", gap: "20px" }}>
                             <ConsultantAppointmentsPie data={statusCounts} />
                             <ConsultantAppointmentsPie data={salesCounts} />
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <h2 className="text-2xl font-bold mb-4">Feedbacks</h2>
+                        <div style={{ display: "flex", justifyContent: "space-around", gap: "20px" }}>
+                            <Feedbacks userType={userRole} />
                         </div>
                     </>
                 )}

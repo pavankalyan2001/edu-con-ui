@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 import { productsData } from "../dataObjs/productsData.js";
+import Feedbacks from "./feedbacks.js";
 
 export default function AppointmentDashboard() {
   const [appointments, setAppointments] = useState([]);
   const [consultants, setConsultants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+  const [userRole] = useState(localStorage.getItem("role"));
   const [productDetails] = useState({});
   const [formData, setFormData] = useState({
     consultantId: "",
@@ -178,6 +180,9 @@ export default function AppointmentDashboard() {
           <li className={view === "products" ? "active" : ""} onClick={() => { setView("products") }}>
             Products
           </li>
+          <li className={view === "feedbacks" ? "active" : ""} onClick={() => { setView("feedbacks") }}>
+            Feedbacks
+          </li>
           <li onClick={handleLogout} className="logout">
             Logout
           </li>
@@ -271,7 +276,8 @@ export default function AppointmentDashboard() {
               </div>
             )}
           </>
-        ) : (<>
+        ) : view === "products" ? (
+        <>
           <h2 className="heading">Available Courses</h2>
           {products.length > 0 ? (
             <>
@@ -322,6 +328,13 @@ export default function AppointmentDashboard() {
             </>
           )}
         </>
+        ):(
+          <>
+          <h2 className="text-2xl font-bold mb-4">Feedbacks</h2>
+                        <div style={{ display: "flex", justifyContent: "space-around", gap: "20px" }}>
+                            <Feedbacks userType={userRole} />
+                        </div>
+          </>
         )}
       </div>
     </div>
