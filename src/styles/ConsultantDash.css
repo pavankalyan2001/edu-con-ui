@@ -1,3 +1,4 @@
+.complete-button,
 .confirm-button {
     background-color: #4caf50;
     color: white;
@@ -9,6 +10,7 @@
     margin-right: 8px;
   }
   
+  .complete-button:hover,
   .confirm-button:hover {
     background-color: #45a049;
   }
